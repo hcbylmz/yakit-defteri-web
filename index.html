@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yakıt Tüketimi Hesaplama: 100 km'de Kaç Litre? | Yakıt Defteri</title>
+<meta name="description" content="Aracının 100 km'de kaç litre yaktığını, km başına maliyetini ve yolculuğun yakıt masrafını hesapla. Benzin, dizel ve LPG için ücretsiz hesaplayıcı.">
+<link rel="alternate" hreflang="tr" href="./">
+<link rel="alternate" hreflang="en" href="./en/">
+<link rel="icon" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<header>
+  <a class="brand" href="./"><img src="icon.png" alt="">Yakıt Defteri</a>
+  <nav><a href="./en/" hreflang="en">English</a></nav>
+</header>
+
+<p class="eyebrow">Ücretsiz hesaplayıcı</p>
+<h1>Yakıt tüketimi hesaplama</h1>
+<p class="lead">Aracının 100 km'de kaç litre yaktığını ve bir yolculuğun sana kaça mal olacağını hesapla. Benzin, dizel ve LPG için aynı hesap geçerli.</p>
+
+<section class="card" id="tuketim">
+  <h2>100 km'de kaç litre?</h2>
+  <div class="fields">
+    <label>Gidilen yol (km)<input id="t-km" inputmode="decimal" placeholder="ör. 540"></label>
+    <label>Alınan yakıt (litre)<input id="t-l" inputmode="decimal" placeholder="ör. 34,2"></label>
+    <label>Litre fiyatı (₺, isteğe bağlı)<input id="t-p" inputmode="decimal" placeholder="ör. 44,90"></label>
+  </div>
+  <div class="result empty" id="t-out">Yol ve litreyi gir.</div>
+</section>
+
+<section class="card" id="yolculuk">
+  <h2>Yolculuk yakıt masrafı</h2>
+  <div class="fields">
+    <label>Mesafe (km)<input id="y-km" inputmode="decimal" placeholder="ör. 450"></label>
+    <label>Tüketim (L/100 km)<input id="y-c" inputmode="decimal" placeholder="ör. 6,5"></label>
+    <label>Litre fiyatı (₺)<input id="y-p" inputmode="decimal" placeholder="ör. 44,90"></label>
+    <label>Kişi sayısı (isteğe bağlı)<input id="y-n" inputmode="numeric" placeholder="ör. 3"></label>
+  </div>
+  <div class="result empty" id="y-out">Mesafe, tüketim ve fiyatı gir.</div>
+</section>
+
+<section class="card cta">
+  <p><strong>Her dolumda elle hesaplamak zorunda değilsin.</strong> Yakıt Defteri dolumlarını kaydeder, tüketimi ve aylık masrafı kendisi hesaplar. Reklam yok, hesap açmak yok, kayıtlar telefonunda kalır.</p>
+  <a class="button" href="https://play.google.com/store/apps/details?id=com.yakitdefteri.app&amp;referrer=utm_source%3Dweb%26utm_medium%3Dhesaplayici%26utm_campaign%3Dtr">Google Play'den indir</a>
+</section>
+
+<h2>Yakıt tüketimi nasıl hesaplanır?</h2>
+<p>En doğru sonucu <strong>tam depo yöntemi</strong> verir:</p>
+<ol>
+  <li>Depoyu tamamen doldur ve kilometre sayacını not et.</li>
+  <li>Her zamanki gibi kullan.</li>
+  <li>Depoyu yine tamamen doldur. Aldığın litreyi ve yeni kilometreyi not et.</li>
+  <li>İki kilometre arasındaki farkı bul. Bu, aldığın yakıtla gittiğin yoldur.</li>
+</ol>
+<p>Formül: <code>tüketim (L/100 km) = litre ÷ km × 100</code></p>
+<p>Örnek: 540 km gittin ve depoyu 34,2 litreyle doldurdun. 34,2 ÷ 540 × 100 = <strong>6,33 L/100 km</strong>. Litresi 44,90 ₺ ise km başına maliyet 34,2 × 44,90 ÷ 540 = <strong>2,84 ₺</strong>.</p>
+
+<h3>Kısmi dolumda ne yapmalı?</h3>
+<p>Depoyu tam doldurmadıysan o dolumu tek başına hesaplama. Bir sonraki tam depoya kadar aldığın tüm litreleri topla ve o aradaki toplam kilometreye böl. Tek bir kısmi dolumla yapılan hesap gerçekte olduğundan çok düşük ya da çok yüksek çıkar.</p>
+
+<h3>Göstergedeki ortalama neden farklı?</h3>
+<p>Araçtaki yol bilgisayarı genellikle tahmin yapar ve çoğu araçta gerçek tüketimden biraz düşük gösterir. Pompadan aldığın litreyle yapılan hesap gerçek değeri verir.</p>
+
+<h3>LPG'li araçta nasıl hesaplanır?</h3>
+<p>LPG ve benzini ayrı hesapla. Her yakıt için kendi litresini aynı aradaki kilometreye böl. LPG tüketimi benzinden genellikle %15–25 daha yüksektir, ama litre fiyatı düşük olduğu için km başına maliyet daha azdır.</p>
+
+<h3>Km başına maliyet nasıl bulunur?</h3>
+<p><code>km başına maliyet = tüketim (L/100 km) × litre fiyatı ÷ 100</code>. Bakım, sigorta ve vergiyi de eklemek istersen bir dönemdeki tüm araç masraflarını o dönemde gidilen kilometreye böl.</p>
+
+<footer>
+  <p>Yakıt Defteri, tek kişilik bir geliştiricinin ücretsiz Android uygulamasıdır. <a href="https://hcbylmz.github.io/yakit-defteri-privacy/">Gizlilik politikası</a>. Bu sayfa çerez kullanmaz, girdiğin sayılar tarayıcında kalır.</p>
+</footer>
+</main>
+<script src="calc.js"></script>
+<script>
+calc({
+  locale: 'tr-TR',
+  t: (km, l, p) => {
+    const c = l / km * 100;
+    let notes = `${fmt(km / l, 1)} km/L`;
+    if (p) notes += ` · km başına ${fmt(l * p / km, 2)} ₺ · ${fmt(c * p, 0)} ₺ / 100 km`;
+    return [`${fmt(c, 2)} L/100 km`, notes];
+  },
+  y: (km, c, p, n) => {
+    const l = km * c / 100, cost = l * p;
+    let notes = `${fmt(l, 1)} litre yakıt`;
+    if (n > 1) notes += ` · kişi başı ${fmt(cost / n, 0)} ₺`;
+    return [`${fmt(cost, 0)} ₺`, notes];
+  },
+});
+</script>
+</body>
+</html>

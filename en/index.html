@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gas Mileage Calculator: MPG and Trip Fuel Cost | Fuel Log</title>
+<meta name="description" content="Work out your car's real MPG, cost per mile and the fuel cost of a road trip. Free calculator with MPG and L/100 km.">
+<link rel="alternate" hreflang="tr" href="../">
+<link rel="alternate" hreflang="en" href="./">
+<link rel="icon" href="../favicon.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+<header>
+  <a class="brand" href="./"><img src="../icon.png" alt="">Fuel Log</a>
+  <nav><a href="../" hreflang="tr">Türkçe</a></nav>
+</header>
+
+<p class="eyebrow">Free calculator</p>
+<h1>Gas mileage calculator</h1>
+<p class="lead">Find your car's real MPG and what a trip will cost you in fuel. Works for gas, diesel and hybrids.</p>
+
+<section class="card" id="mpg">
+  <h2>What is my MPG?</h2>
+  <div class="fields">
+    <label>Miles driven<input id="t-km" inputmode="decimal" placeholder="e.g. 320"></label>
+    <label>Gallons filled<input id="t-l" inputmode="decimal" placeholder="e.g. 10.4"></label>
+    <label>Price per gallon ($, optional)<input id="t-p" inputmode="decimal" placeholder="e.g. 3.29"></label>
+  </div>
+  <div class="result empty" id="t-out">Enter miles and gallons.</div>
+</section>
+
+<section class="card" id="trip">
+  <h2>Trip fuel cost</h2>
+  <div class="fields">
+    <label>Distance (miles)<input id="y-km" inputmode="decimal" placeholder="e.g. 280"></label>
+    <label>Your MPG<input id="y-c" inputmode="decimal" placeholder="e.g. 31"></label>
+    <label>Price per gallon ($)<input id="y-p" inputmode="decimal" placeholder="e.g. 3.29"></label>
+    <label>People sharing (optional)<input id="y-n" inputmode="numeric" placeholder="e.g. 3"></label>
+  </div>
+  <div class="result empty" id="y-out">Enter distance, MPG and price.</div>
+</section>
+
+<section class="card cta">
+  <p><strong>Stop doing this by hand at every fill-up.</strong> Fuel Log keeps your fill-ups and works out MPG, cost per mile and monthly spend for you. No ads, no account, your data stays on your phone.</p>
+  <a class="button" href="https://play.google.com/store/apps/details?id=com.yakitdefteri.app&amp;hl=en&amp;referrer=utm_source%3Dweb%26utm_medium%3Dcalculator%26utm_campaign%3Den">Get it on Google Play</a>
+</section>
+
+<h2>How to calculate MPG</h2>
+<p>The <strong>full-tank method</strong> gives the most accurate number:</p>
+<ol>
+  <li>Fill the tank to the top and note the odometer.</li>
+  <li>Drive as usual.</li>
+  <li>Fill the tank to the top again. Note the gallons and the new odometer reading.</li>
+  <li>Subtract the two odometer readings. That is how far you drove on those gallons.</li>
+</ol>
+<p>Formula: <code>MPG = miles ÷ gallons</code></p>
+<p>Example: you drove 320 miles and the tank took 10.4 gallons. 320 ÷ 10.4 = <strong>30.8 MPG</strong>. At $3.29 a gallon that is 10.4 × 3.29 ÷ 320 = <strong>$0.107 per mile</strong>.</p>
+
+<h3>What about a partial fill-up?</h3>
+<p>Don't calculate a partial fill-up on its own. Add up all the gallons until the next full tank and divide the miles over that stretch by the total. A single partial fill-up gives a number that is far too high or too low.</p>
+
+<h3>Why is my dashboard MPG different?</h3>
+<p>The trip computer estimates fuel use, and on many cars it reads a little better than reality. The number from the pump is the real one.</p>
+
+<h3>MPG to L/100 km</h3>
+<p><code>L/100 km = 235.2 ÷ MPG</code> (US gallons). 30 MPG is about 7.8 L/100 km. For UK gallons use 282.5 instead of 235.2.</p>
+
+<footer>
+  <p>Fuel Log is a free Android app made by one developer. <a href="https://hcbylmz.github.io/yakit-defteri-privacy/">Privacy policy</a>. This page uses no cookies; the numbers you enter stay in your browser.</p>
+</footer>
+</main>
+<script src="../calc.js"></script>
+<script>
+calc({
+  locale: 'en-US',
+  t: (mi, gal, p) => {
+    const mpg = mi / gal;
+    let notes = `${fmt(235.215 / mpg, 1)} L/100 km`;
+    if (p) notes += ` · $${fmt(gal * p / mi, 3)} per mile`;
+    return [`${fmt(mpg, 1)} MPG`, notes];
+  },
+  y: (mi, mpg, p, n) => {
+    const gal = mi / mpg, cost = gal * p;
+    let notes = `${fmt(gal, 1)} gallons`;
+    if (n > 1) notes += ` · $${fmt(cost / n, 2)} per person`;
+    return [`$${fmt(cost, 2)}`, notes];
+  },
+});
+</script>
+</body>
+</html>
